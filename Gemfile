@@ -25,8 +25,7 @@ gem "haml-rails"
 gem "jquery-rails"
 
 gem "formtastic"
-gem "formtastic_cocoon", :path => "../formtastic-cocoon"             # for local testing
-#gem "formtastic-cocoon"
+gem "cocoon"
 
 
 # we need this here, see http://blog.davidchelimsky.net/2010/07/11/rspec-rails-2-generators-and-rake-tasks/
@@ -42,8 +41,4 @@ group :test, :spec, :cucumber do
   gem "remarkable",              ">=4.0.0.alpha2"
   gem "remarkable_activemodel",  ">=4.0.0.alpha2"
   gem "remarkable_activerecord", ">=4.0.0.alpha2"
-#  gem "capybara"
-#  gem "cucumber"
-#  gem "database_cleaner"
-#  gem "cucumber-rails"
 end
