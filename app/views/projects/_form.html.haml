@@ -14,5 +14,5 @@
         = render 'task_fields', :f => task
       .links
         = link_to_add_association 'add task', f, :tasks
-    -f.buttons do
-      = f.submit 'Save'
+    = f.buttons do
+      = f.commit_button  :button_html => { :disable_with => 'Please wait ...'}
