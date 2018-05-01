@@ -1,7 +1,7 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
-Factory.define :task do |f|
-  f.description "MyString"
-  f.done false
-  f.project_id 1
+FactoryBot.define do
+  factory :task do
+    description 'Learn to code'
+    done true
+    project
+  end
 end

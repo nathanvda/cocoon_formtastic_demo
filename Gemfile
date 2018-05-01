@@ -1,44 +1,32 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.1.1'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '~> 5.1.6'
 
-#gem 'pg'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'puma', '~> 3.7'
+gem 'sqlite3'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'cocoon'
+gem 'formtastic', '~> 3.0'
+gem 'jquery-rails'
+gem 'haml-rails', '~> 1.0'
+gem 'sass-rails', '~> 5.0'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+group :development do
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
-# To use debugger
-# gem 'ruby-debug'
-
-gem 'rails3-generators'
-
-gem "bson_ext"
-gem "haml"
-gem "haml-rails"
-gem "jquery-rails"
-
-gem "formtastic"
-gem "cocoon"
-
-
-# we need this here, see http://blog.davidchelimsky.net/2010/07/11/rspec-rails-2-generators-and-rake-tasks/
 group :development, :test do
-  gem "rspec-rails", ">= 2.2.0"
-  gem "simplecov", :require => false
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.7'
 end
 
-# test-environment gems
-group :test, :spec, :cucumber do
-  gem "factory_girl_rails"
-  gem "rspec",                   ">= 2.2.0"
-  gem "remarkable",              ">=4.0.0.alpha2"
-  gem "remarkable_activemodel",  ">=4.0.0.alpha2"
-  gem "remarkable_activerecord", ">=4.0.0.alpha2"
-end
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
