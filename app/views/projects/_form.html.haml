@@ -1,18 +1,14 @@
 = semantic_form_for @project do |f|
-  -if @project.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
-      %ul
-        - @project.errors.full_messages.each do |msg|
-          %li= msg
-  - f.inputs do
+  = f.inputs do
     = f.input :name
     = f.input :description
-    %h3 Tasks
-    #tasks
+
+    %fieldset#tasks
+      %legend Tasks
       = f.semantic_fields_for :tasks do |task|
-        = render 'task_fields', :f => task
+        = render 'task_fields', f: task
       .links
         = link_to_add_association 'add task', f, :tasks
-    = f.buttons do
-      = f.commit_button  :button_html => { :disable_with => 'Please wait ...'}
+
+  = f.actions do
+    = f.action :submit, as: :input

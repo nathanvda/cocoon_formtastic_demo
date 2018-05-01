@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "projects/edit.html.haml" do
+RSpec.describe "projects/edit", type: :view do
   before(:each) do
-    @project = assign(:project, stub_model(Project,
+    @project = assign(:project, Project.create!(
       :name => "MyString",
       :description => "MyString"
     ))
@@ -11,10 +11,11 @@ describe "projects/edit.html.haml" do
   it "renders the edit project form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form", :action => project_path(@project), :method => "post" do
-      assert_select "input#project_name", :name => "project[name]"
-      assert_select "input#project_description", :name => "project[description]"
+    assert_select "form[action=?][method=?]", project_path(@project), "post" do
+
+      assert_select "input[name=?]", "project[name]"
+
+      assert_select "input[name=?]", "project[description]"
     end
   end
 end

@@ -1,34 +1,38 @@
-require "spec_helper"
+require "rails_helper"
 
-describe ProjectsController do
+RSpec.describe ProjectsController, type: :routing do
   describe "routing" do
 
-    it "recognizes and generates #index" do
-      { :get => "/projects" }.should route_to(:controller => "projects", :action => "index")
+    it "routes to #index" do
+      expect(:get => "/projects").to route_to("projects#index")
     end
 
-    it "recognizes and generates #new" do
-      { :get => "/projects/new" }.should route_to(:controller => "projects", :action => "new")
+    it "routes to #new" do
+      expect(:get => "/projects/new").to route_to("projects#new")
     end
 
-    it "recognizes and generates #show" do
-      { :get => "/projects/1" }.should route_to(:controller => "projects", :action => "show", :id => "1")
+    it "routes to #show" do
+      expect(:get => "/projects/1").to route_to("projects#show", :id => "1")
     end
 
-    it "recognizes and generates #edit" do
-      { :get => "/projects/1/edit" }.should route_to(:controller => "projects", :action => "edit", :id => "1")
+    it "routes to #edit" do
+      expect(:get => "/projects/1/edit").to route_to("projects#edit", :id => "1")
     end
 
-    it "recognizes and generates #create" do
-      { :post => "/projects" }.should route_to(:controller => "projects", :action => "create")
+    it "routes to #create" do
+      expect(:post => "/projects").to route_to("projects#create")
     end
 
-    it "recognizes and generates #update" do
-      { :put => "/projects/1" }.should route_to(:controller => "projects", :action => "update", :id => "1")
+    it "routes to #update via PUT" do
+      expect(:put => "/projects/1").to route_to("projects#update", :id => "1")
     end
 
-    it "recognizes and generates #destroy" do
-      { :delete => "/projects/1" }.should route_to(:controller => "projects", :action => "destroy", :id => "1")
+    it "routes to #update via PATCH" do
+      expect(:patch => "/projects/1").to route_to("projects#update", :id => "1")
+    end
+
+    it "routes to #destroy" do
+      expect(:delete => "/projects/1").to route_to("projects#destroy", :id => "1")
     end
 
   end

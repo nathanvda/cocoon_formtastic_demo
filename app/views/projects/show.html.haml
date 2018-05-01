@@ -7,6 +7,15 @@
   %b Description:
   = @project.description
 
+- unless @project.tasks.empty?
+  %p
+    %b Tasks:
+
+  %ul
+    - @project.tasks.each do |task|
+      %li{:style => ("text-decoration: line-through;" if task.done?)}= task.description
+
+
 = link_to 'Edit', edit_project_path(@project)
 \|
 = link_to 'Back', projects_path
