@@ -1,6 +1,6 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
-Factory.define :project do |f|
-  f.name "MyString"
-  f.description "MyString"
+FactoryBot.define do
+  factory :project do
+    name 'Write New Application'
+    description 'We need to write an application for our company to be successful'
+  end
 end

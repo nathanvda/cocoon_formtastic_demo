@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "projects/show.html.haml" do
+RSpec.describe "projects/show", type: :view do
   before(:each) do
-    @project = assign(:project, stub_model(Project,
+    @project = assign(:project, Project.create!(
       :name => "Name",
       :description => "Description"
     ))
@@ -10,9 +10,7 @@ describe "projects/show.html.haml" do
 
   it "renders attributes in <p>" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Name/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Description/)
+    expect(rendered).to match(/Name/)
+    expect(rendered).to match(/Description/)
   end
 end

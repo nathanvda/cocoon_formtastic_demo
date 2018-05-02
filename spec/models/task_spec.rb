@@ -1,5 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Task do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Task, type: :model do
+  it 'The factory is valid' do
+    expect(build(:project)).to be_valid
+  end
 end
